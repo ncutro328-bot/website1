@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadia Cutro | Portfolio</title>
+
+<link rel="stylesheet" href="https://use.typekit.net/lpn5fuy.css">
+
+  <style>
+    :root {
+      --bg: #fcf2f3;
+      --text: #450000; 
+      --accent: #4d2424;
+      --card: #cb8a8c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "ivyora-display", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s ease;
+      line-height: 1.6;
+      font-size:1.25rem;
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+
+      /* Image placeholder */
+      background: url('f99e74d4724ae0bca752594ac3a18bf3.jpg') center/cover no-repeat;
+      min-height: 300px;
+
+      position: relative;
+    }
+
+    /* Overlay for readability */
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(252, 242, 243, 0.6);
+      z-index: 0;
+    }
+
+    /* Keep text above image */
+    header * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 6rem;
+      color: var(--accent);
+      font-family: "deseo-medium", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      font-size:3rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--card);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button.submit-btn {
+      padding: 10px 20px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Nadia Cutro</h1>
+    <p>Graphic Designer</p>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a graphic designer working in branding and typography and I approach my work with a minimalistic and intentional view. I see graphic design is both creative and methodical. In my design process, I begin by using my strong project planning and organizing capabilities to thoughtfully implement ideas, guidelines, and visual systems. When the opportunity arises, I also explore more personal themes, including family, culture, and nostalgia. My personal aesthetic is consistent and I apply it to projects by keeping things clean, simple, and appealing with a minimalist style when the project supports it. If it does not, I am flexible and can pivot my design choices to step outside of a minimalistic view to work to create something completely unexpected. My main goal as a designer is to create efficiency for viewers while maintaining appeal and interest.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects" id="projectContainer"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="event.preventDefault(); alert('Message sent!');">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button class="submit-btn">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 Your Name. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const projects = [
+      {
+        title: "Digital World",
+        description: "A digital world that explores the human range of emotions and moods. As you click on each bubble, you are transported into an immersive feeling or mood.",
+        link: "project1.html"
+      },
+      {
+        title: "Visual Identity",
+        description: "A visual identity that is a comprehensive branding campaign for a World Heritage Site in Padua, Italy. Including logo design, posters, assets, and mockups.",
+        link: "project2.html"
+      },
+      {
+        title: "Lecture Series",
+        description: "A poster series that promotes a visiting artist lecture focusing on typography and minimalism to emphasize the artists.",
+        link: "project3.html"
+      }
+    ];
+
+    const container = document.getElementById("projectContainer");
+
+    projects.forEach(project => {
+      const link = document.createElement("a");
+      link.href = project.link;
+      link.classList.add("project-link");
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+      `;
+
+      link.appendChild(card);
+      container.appendChild(link);
+    });
+  </script>
+
+</body>
+</html>
